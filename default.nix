@@ -4,6 +4,8 @@ with import <nixpkgs> {}; stdenv.mkDerivation {
 
   buildInputs = [
     pkgs.godot
+    pkgs.godot_headers
+    pkgs.clang
   ];
 
   meta = {
