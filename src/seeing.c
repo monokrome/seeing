@@ -12,7 +12,7 @@ void GDN_EXPORT godot_nativescript_init(void *p_handle) {
 
     nativescript_api->godot_nativescript_register_class(
 	p_handle,
-	"UNIVERSE", "Reference",
+	"Universe", "Reference",
         create, destroy
     );
 
@@ -23,7 +23,7 @@ void GDN_EXPORT godot_nativescript_init(void *p_handle) {
 
     nativescript_api->godot_nativescript_register_method(
 	p_handle,
-	"UNIVERSE", "get_data",
+	"Universe", "get_data",
         attributes, get_data
     );
 }

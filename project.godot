@@ -4,3 +4,10 @@ config_version=3
 [application]
 
 config/name="Seeing"
+run/main_scene="res://assets/scenes/universe.tscn"
+
+
+[rendering]
+
+quality/intended_usage/framebuffer_allocation=0
+threads/thread_model=2
