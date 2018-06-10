@@ -1,5 +1,25 @@
 {
+	"assets/scripts/*.gdns": {
+		"type": "script",
+		"alternate": "assets/libraries/seeing.gdnlib",
+
+		"template": [
+			"[gd_resource type=\"NativeScript\" load_steps=2 format=2]",
+			"",
+			"",
+			"[ext_resource path=\"res://assets/libraries/seeing.gdnlib\" type=\"GDNativeLibrary\" id=1]",
+			"",
+			"",
+			"[resource]",
+			"",
+			"class_name = \"{camelcase|capitalize}\"",
+			"library = ExtResource( 1 )",
+			""
+		]
+	},
+
 	"src/*.c": {
+		"type": "source",
 		"alternate": "src/{}.h",
 		"template": [
 			"#include \"{}.h\"",
@@ -10,6 +30,7 @@
 	},
 
 	"src/*.h": {
+		"type": "header",
 		"alternate": "src/{}.c",
 		"template": [
 			"#include <gdnative_api_struct.gen.h>",
