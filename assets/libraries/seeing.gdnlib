@@ -5,10 +5,12 @@ load_once=true
 symbol_prefix="godot_"
 reloadable=true
 
+
 [entry]
 
-X11.64="res://bin/seeing.so"
-X11.32="res://bin/seeing.so"
+X11.64="res:///lib/seeing.so"
+X11.32="res:///lib/seeing.so"
+
 
 [dependencies]
 

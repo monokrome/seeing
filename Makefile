@@ -1,4 +1,5 @@
-TARGET  := bin/seeing.so
+PREFIX  := .
+TARGET  := lib/seeing.so
 CC      := clang
 
 sources = $(wildcard src/*.c)
@@ -16,6 +17,8 @@ lib/%.o: src/%.c
 
 
 install: $(TARGET)
-	mkdir -p ${PREFIX}/bin
-	cp $(TARGET) ${PREFIX}/bin
 .PHONY: install
+
+clean:
+	rm -rf $(TARGET)
+.PHONY: clean
