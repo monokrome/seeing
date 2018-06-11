@@ -20,5 +20,5 @@ install: $(TARGET)
 .PHONY: install
 
 clean:
-	rm -rf $(TARGET)
+	rm -rf lib
 .PHONY: clean
