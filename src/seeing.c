@@ -2,7 +2,6 @@
 
 #include "universe.h"
 
-
 void GDN_EXPORT godot_nativescript_init(void *p_handle) {
     godot_instance_create_func create = { NULL, NULL, NULL };
     create.create_func = &universe_constructor;
@@ -10,22 +9,8 @@ void GDN_EXPORT godot_nativescript_init(void *p_handle) {
     godot_instance_destroy_func destroy = { NULL, NULL, NULL };
     destroy.destroy_func = &universe_destructor;
 
-    nativescript_api->godot_nativescript_register_class(
-	p_handle,
-	"Universe", "Reference",
-        create, destroy
-    );
-
-    godot_instance_method get_data = { NULL, NULL, NULL };
-    get_data.method = &universe_get_data;
-
-    godot_method_attributes attributes = { GODOT_METHOD_RPC_MODE_DISABLED };
-
-    nativescript_api->godot_nativescript_register_method(
-	p_handle,
-	"Universe", "get_data",
-        attributes, get_data
-    );
+    // Define Godot objects
+    DEFINE_OBJECT(Universe, Reference);
 }
 
 void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *p_options) {
