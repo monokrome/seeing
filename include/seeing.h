@@ -7,6 +7,7 @@ const godot_gdnative_core_api_struct *gdnative_api;
 const godot_gdnative_ext_nativescript_api_struct *nativescript_api;
 
 
+// Defines a new GDObject named "name" which extends "extends"
 #define DEFINE_OBJECT(name, extends)                     \
     nativescript_api->godot_nativescript_register_class( \
 	p_handle,                                        \
@@ -14,6 +15,16 @@ const godot_gdnative_ext_nativescript_api_struct *nativescript_api;
         create, destroy                                  \
     )
 
+
+// Defines a new method on "owner" with the name "name" and attributes
+// "attributes". After using this, you can refer to some newly created
+// variables from within the calling function.
+//
+// The method instance can be referred to matching the format:
+//   "instance_{{ owner }}_{{ name }}".
+//
+// The attributes object can be referenced as:
+//   "attributes_{{ owner }}_{{ name }}"
 
 #define DEFINE_METHOD(owner, name, attributes)                               \
     godot_instance_method instance_## owner ##_## name = {NULL, NULL, NULL}; \
