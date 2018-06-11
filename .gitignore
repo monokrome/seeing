@@ -1,3 +1,9 @@
+# Collada artifacts from compiling .blend files
+*.dae
+
+# Godot import files
+*.import
+
 # Prerequisites
 *.d
 
