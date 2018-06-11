@@ -1,42 +1,52 @@
 {
-	"assets/scripts/*.gdns": {
-		"type": "script",
-		"alternate": "assets/libraries/seeing.gdnlib",
-
-		"template": [
-			"[gd_resource type=\"NativeScript\" load_steps=2 format=2]",
-			"",
-			"",
-			"[ext_resource path=\"res://assets/libraries/seeing.gdnlib\" type=\"GDNativeLibrary\" id=1]",
-			"",
-			"",
-			"[resource]",
-			"",
-			"class_name = \"{camelcase|capitalize}\"",
-			"library = ExtResource( 1 )",
-			""
-		]
-	},
-
-	"src/*.c": {
-		"type": "source",
-		"alternate": "src/{}.h",
-		"template": [
-			"#include \"{}.h\"",
-			"",
-			"void *{snakecase}_constructor(godot_object *p_instance, void *p_method_data) {open}{close}",
-			"void {snakecase}_destructor(godot_object *p_instance, void *p_method_data, void *p_user_data) {open}{close}"
-		]
-	},
-
-	"include/*.h": {
-		"type": "header",
-		"alternate": "src/{}.c",
-		"template": [
-			"#include <gdnative_api_struct.gen.h>",
-			"",
-			"void *{snakecase}_constructor(godot_object *p_instance, void *p_method_data);",
-			"void {snakecase}_destructor(godot_object *p_instance, void *p_method_data, void *p_user_data);"
-		]
-	}
+  "assets/scripts/*.gdns": {
+    "alternate": "assets/libraries/seeing.gdnlib",
+    "template": [
+      "[gd_resource type=\"NativeScript\" load_steps=2 format=2]",
+      "",
+      "",
+      "[ext_resource path=\"res://assets/libraries/seeing.gdnlib\" type=\"GDNativeLibrary\" id=1]",
+      "",
+      "",
+      "[resource]",
+      "",
+      "class_name = \"{camelcase|capitalize}\"",
+      "library = ExtResource( 1 )",
+      ""
+    ],
+    "type": "script"
+  },
+  "include/*.h": {
+    "alternate": "src/{}.c",
+    "template": [
+      "#ifndef SEEING_{uppercase}_H",
+      "#define SEEING_{uppercase}_H",
+      "",
+      "#include \"seeing.h\"",
+      "",
+      "void *{snakecase}_constructor(godot_object *p_instance, void *p_method_data);",
+      "void {snakecase}_destructor(godot_object *p_instance, void *p_method_data, void *p_user_data);",
+      "",
+      "#endif"
+    ],
+    "type": "header"
+  },
+  "src/*.c": {
+    "alternate": "src/{}.h",
+    "template": [
+      "#include \"{}.h\"",
+      "",
+      "typedef struct state {open}{close} state;",
+      "",
+      "void *{snakecase}_constructor(godot_object *p_instance, void *p_method_data) {open}",
+      "\tstate *data = gdnative_api->godot_alloc(sizeof(state));",
+      "\treturn data;",
+      "{close}",
+      "",
+      "void {snakecase}_destructor(godot_object *p_instance, void *p_method_data, void *p_user_data) {open}",
+      "\tgdnative_api->godot_free(p_user_data);",
+      "{close}"
+    ],
+    "type": "source"
+  }
 }
