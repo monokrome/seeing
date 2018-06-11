@@ -19,8 +19,8 @@
   "include/*.h": {
     "alternate": "src/{}.c",
     "template": [
-      "#ifndef SEEING_{uppercase}_H",
-      "#define SEEING_{uppercase}_H",
+      "#ifndef {uppercase}_H",
+      "#define {uppercase}_H",
       "",
       "#include \"seeing.h\"",
       "",
