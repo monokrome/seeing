@@ -29,7 +29,7 @@
 		]
 	},
 
-	"src/*.h": {
+	"include/*.h": {
 		"type": "header",
 		"alternate": "src/{}.c",
 		"template": [

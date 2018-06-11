@@ -1,7 +1,7 @@
 PREFIX  := .
 TARGET  := lib/seeing.so
 CC      := clang
-CFLAGS  := -I include -std=c11
+CFLAGS  := -Iinclude -std=c11
 
 sources = $(wildcard src/*.c)
 objects = $(patsubst src/%.c,lib/%.o,$(sources))
